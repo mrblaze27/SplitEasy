@@ -52,18 +52,24 @@ Per eseguirlo è sufficiente installare le dipendenze (`npm install`) e avviare 
 ```tsx
 // example/App.tsx
 import React from 'react';
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './src/screens/LoginScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Benvenuto su SplitEasy!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 ```
 
-Questo file non implementa ancora la logica di login o la gestione delle spese, ma rappresenta il punto di partenza su cui costruire il resto dell'applicazione.
+Nella cartella `src` sono presenti schermate di esempio (login, lista gruppi, nuova spesa) utili a sviluppare il resto dell'applicazione.
 
 ## Passi successivi
 1. Inizializzare un progetto Expo (`npx create-expo-app SplitEasy`).
